@@ -1,0 +1,67 @@
+#include <LiquidCrystal.h>
+
+// LCD pin setup: RS, E, D4, D5, D6, D7
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+// Sensor pins (potentiometers)
+int airPin = A0;   // MQ135 (Air Quality)
+int coPin = A1;    // MQ7 (CO)
+int gasPin = A2;   // MQ2 (Gas)
+int co2Pin = A3;   // CO2
+int tempPin = A4;  // Temperature (simulated)
+
+// Buzzer
+int buzzer = 6;
+
+void setup() {
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+
+  lcd.print("Air Quality");
+  lcd.setCursor(0,1);
+  lcd.print("Monitoring...");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+
+  // Read values
+  int air = analogRead(airPin);
+  int co = analogRead(coPin);
+  int gas = analogRead(gasPin);
+  int co2 = analogRead(co2Pin);
+  int temp = analogRead(tempPin);
+
+  // Print in Serial Monitor
+  Serial.println("----Air Quality Data----");
+  Serial.print("Air: "); Serial.println(air);
+  Serial.print("CO: "); Serial.println(co);
+  Serial.print("Gas: "); Serial.println(gas);
+  Serial.print("CO2: "); Serial.println(co2);
+  Serial.print("Temp: "); Serial.println(temp);
+
+  // Display on LCD (line 1)
+  lcd.setCursor(0, 0);
+  lcd.print("A:");
+  lcd.print(air);
+  lcd.print(" C:");
+  lcd.print(co);
+
+  // Display on LCD (line 2)
+  lcd.setCursor(0, 1);
+  lcd.print("G:");
+  lcd.print(gas);
+  lcd.print(" T:");
+  lcd.print(temp);
+
+  // Alert condition
+  if (air > 500 || co > 500 || gas > 500) {
+    digitalWrite(buzzer, HIGH);
+  } else {
+    digitalWrite(buzzer, LOW);
+  }
+
+  delay(1000);
+}
