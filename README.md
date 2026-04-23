@@ -29,7 +29,7 @@ This project is created using Tinkercad simulation.
 ---
 
 ## 📸 Circuit Diagram
-![Circuit](<img width="1536" height="1024" alt="tinkercad simulation" src="https://github.com/user-attachments/assets/e3b0a63c-8cc0-44d8-ad87-5af0cc7fd4e8" />)
+![Circuit](<img width="1536" height="1024" alt="tinkercad simulation" src="https://github.com/user-attachments/assets/e3b0a63c-8cc0-44d8-ad87-5af0cc7fd4e8" />) 
 
 ---
 
