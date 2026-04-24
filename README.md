@@ -2,7 +2,7 @@
 
 ## 📌 Project Description
 This project monitors air pollution levels using sensors and displays real-time data. 
-It alerts users when pollution exceeds safe limits.
+It alerts users when pollution exceeds safe limits. 
 
 ---
 
